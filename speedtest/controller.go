@@ -20,6 +20,6 @@ func (controller controller) GetSpeedtests() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		speedtests := controller.repository.FindAll()
 
-		c.JSON(200, speedtests)
+		c.JSON(200, map[string][]Speedtest{"speedtests": speedtests})
 	}
 }

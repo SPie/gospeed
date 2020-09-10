@@ -24,7 +24,11 @@ func main() {
 
 	finished := speedtest.NewHandler(client, speedtestRepo).Run()
 
-	api.Run(speedtest.NewController(speedtestRepo))
+	api.Run(
+		os.Getenv("HOST_ADDRESS"),
+		os.Getenv("HOST_PORT"),
+		speedtest.NewController(speedtestRepo),
+	)
 
 	<-finished
 }

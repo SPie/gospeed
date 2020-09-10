@@ -45,7 +45,7 @@ func (r repository) Create(speedtest *Speedtest) {
 func (r repository) FindAll() []Speedtest {
 	var speedtests []Speedtest
 
-	r.connectionHandler.Find(&Speedtest{})
+	r.connectionHandler.Find(&speedtests)
 
 	return speedtests
 }

@@ -1,12 +1,14 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/spie/gospeed/speedtest"
 )
 
 // Run starts the router engine
-func Run(speedtestController speedtest.Controller) {
+func Run(host string, port string, speedtestController speedtest.Controller) {
 	engine := gin.Default()
 
 	api := engine.Group("/api")
@@ -14,5 +16,5 @@ func Run(speedtestController speedtest.Controller) {
 		api.GET("/speedtests", speedtestController.GetSpeedtests())
 	}
 
-	engine.Run()
+	engine.Run(fmt.Sprintf("%s:%s", host, port))
 }
