@@ -1,4 +1,4 @@
-FROM golang:1.14
+FROM golang:latest
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
@@ -9,6 +9,8 @@ RUN mkdir /speedtest
 
 ADD . /speedtest
 
-WORKDIR /speedtest/cmd/speedtest
+WORKDIR /speedtest
 
 RUN go build .
+
+CMD ["./gospeed"]
